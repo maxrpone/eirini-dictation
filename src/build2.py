@@ -41,11 +41,11 @@ head = ('<!doctype html>\n<html lang="zh-HK">\n<head>\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
         '<meta name="apple-mobile-web-app-capable" content="yes">\n<meta name="mobile-web-app-capable" content="yes">\n'
         '<meta name="apple-mobile-web-app-title" content="默書飛行">\n<meta name="theme-color" content="#111838">\n'
-        '<link rel="manifest" href="manifest.webmanifest">\n<link rel="apple-touch-icon" href="icon-180.png">\n')
+        '<link rel="manifest" href="manifest.webmanifest">\n<link rel="apple-touch-icon" href="icon-180.png">\n<link rel="icon" href="icon-180.png">\n')
 full = head + out.replace('<script>document.documentElement', '</head>\n<body>\n<script>document.documentElement', 1)
 full = full.replace("<style>", "<style>\nbody{margin:0}", 1)
 standalone = full + "\n</body>\n</html>\n"
-open(os.path.join(OUT, "Eirini-Dictation-Flight.html"), "w", encoding="utf-8").write(standalone.replace('<link rel="manifest" href="manifest.webmanifest">\n<link rel="apple-touch-icon" href="icon-180.png">\n', ''))
+open(os.path.join(OUT, "Eirini-Dictation-Flight.html"), "w", encoding="utf-8").write(standalone.replace('<link rel="manifest" href="manifest.webmanifest">\n<link rel="apple-touch-icon" href="icon-180.png">\n<link rel="icon" href="icon-180.png">\n', ''))
 sw = "<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){});}</script>\n"
 open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(full + sw + "</body>\n</html>\n")
 print("cjk", len(cjk), "artifact", len(out), "index", len(full))
